@@ -29,7 +29,11 @@ Before you can start using the Hand Gesture Detection Package, ensure that you h
 
 ### Installation
 
-1. **Install Package**: You can add the Hand Gesture Detection Package to your iOS project using your preferred package manager or by manually including it in your project.
+1. **Install Package**: To use the Hand Gesture Detection Package in your Swift project, add it as a dependency using the Swift Package Manager. Add the following URL to your `Package.swift` file's `dependencies` array:
+
+```
+.package(url: "https://github.com/wolfej94/gesture-recognizer-kit.git", from: "1.0.0"),
+```
 
 2. **Import Package**: In your code, import the package to make use of its gesture detection capabilities.
 
