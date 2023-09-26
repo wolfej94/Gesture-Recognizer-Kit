@@ -63,7 +63,7 @@ We welcome contributions from the community to improve and expand the functional
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/wolfej94/gesture-recognizer-kit/LICENSE) - see the [LICENSE.md](https://github.com/wolfej94/gesture-recognizer-kit/LICENSE) file for details.
+This project is licensed under the [MIT License](https://github.com/wolfej94/Gesture-Recognizer-Kit/blob/main/LICENSE) - see the [LICENSE.md](https://github.com/wolfej94/Gesture-Recognizer-Kit/blob/main/LICENSE) file for details.
 
 ## Contact
 
