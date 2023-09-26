@@ -36,8 +36,43 @@ Before you can start using the Hand Gesture Detection Package, ensure that you h
 3. **Initialize Gesture Detection Object Using the ViewModel**: Create an instance of the gesture detection object within your SwiftUI view using the `ContentViewModel` provided. Configure it as needed within your SwiftUI view, and start capturing video feed for gesture detection.
 
    ```swift
-   import SwiftUI
-   import GestureRecognizerKit // Import the package
+     import SwiftUI
+     import GestureRecognizerKit // Import the package
+  
+     class ContentViewModel: ObservableObject {
+      
+      // MARK: - Variables
+      var videoProcessingChain: VideoProcessingChain
+      var videoCapture: VideoCapture
+      @Published var label: String = "Loading"
+      
+      // MARK: - Initializers
+      init() {
+          videoProcessingChain = VideoProcessingChain()
+  
+          // Begin receiving frames from the video capture.
+          videoCapture = VideoCapture()
+          videoProcessingChain.delegate = self
+          videoCapture.delegate = self
+      }
+    }
+
+    extension ContentViewModel: VideoProcessingChainDelegate {
+      
+      func videoProcessingChain(_ chain: GestureRecognizerKit.VideoProcessingChain, didPredict actionPrediction: GestureRecognizerKit.ActionPrediction, for frames: Int) {
+          label = actionPrediction.label
+      }
+      
+    }
+
+    extension ContentViewModel: VideoCaptureDelegate {
+        
+        func videoCapture(_ videoCapture: GestureRecognizerKit.VideoCapture, didCreate framePublisher: GestureRecognizerKit.FramePublisher) {
+            label = "Loading"
+            videoProcessingChain.upstreamFramePublisher = framePublisher
+        }
+        
+    }
 
    struct ContentView: View {
        @ObservedObject var viewModel = ContentViewModel() // Initialize the view model
